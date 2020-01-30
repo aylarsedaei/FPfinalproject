@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <conio.h>
+#include <time.h>
+#include <math.h>
+
+
+
+int main()
+{
+    printf("How many cells are you going to play with?\n");
+    scanf("%d", &NumberofCells);
+    int x = rand() % n;
+    int y = rand() % n;
+    struct cells * head = create_cell(x,y), *current=head;
+    head -> next = NULL;
+    for (int i=2; i<=NumberofCells; i++)
+    {
+        do
+        {
+            int x = rand() % n;
+            int y = rand() % n;
+        } while (CheckifEmpty(x,y)!=0);
+        locationmap[x][y] = 1;
+        //gets a new random empty x & y for the cell
+        current->next = create_cell(x,y);
+        current=current->next;
+    }
+    //here, you should print the show map function
+    printf("Please choose one of your cells:\n");
+    current = head;
+    for (int i=0; i<NumberofCells; i++)
+    {
+        printf("[%d] %s (%d,%d)\n", i+1, current->cell->name, current->cell->x, current->cell->y);
+        current = current->next;
+    }
+    scanf("%d", &chosen_option);
+    current = search(chosen_option);
+    printf("[1] Move\n[2] Split a cell\n[3] Boost energy\n[4] Save\n[5] Exit\n")
+    scanf("%d", &chosen_option);
+    switch (chosen_option)
+    {
+        case 1:
+        {
+            //move
+        }
+        break;
+        case 2:
+        {
+            //split cell and manage the linked list
+        }
+        break;
+        case 3:
+        {
+            //get energy if it's an energy block
+        }
+        break;
+        case 4:
+        {
+            //save the current game in a binary file
+        }
+        break;
+        case 5:
+        {
+            
+        }
+            
+    }
+
+}
