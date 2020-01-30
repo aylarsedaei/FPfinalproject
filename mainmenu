@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <conio.h>
+#include <time.h>
+#include <math.h>
+
+
+int main()
+{
+    int n,chosen_option;
+    FILE *fp;
+    fp = fopen("map.bin", "rb");
+    if(fp==NULL)
+    {
+        printf("Cannot read from file\n");
+        return -1;
+    }
+    fread(&n, sizeof(int),1, fp);
+    unsigned char mode[n][n];
+    for (int i=0; i<n; i++)
+        for (int j=0; j<n; j++)
+            fread(&mode[i][j],sizeof(unsigned char),1,fp);
+
+    printf("%d\n", n);
+    for (int i=0; i<n; i++)
+    {
+        for (int j=0; j<n; j++)
+            printf("%c ",mode[i][j]);
+        printf("\n");
+    }
+    fclose(fp);
+
+    while (1)
+    {
+        printf("[1] Load\n[2] New single player game\n[3] New Multiplayer game\n[4] Exit\n");
+        scanf("%d", &chosen_option);
+        switch (chosen_option)
+        {
+            case 1:
+            {
+                //load
+            }
+            break;
+            case 2:
+            {
+                //newsingleplayer
+
+            }
+            break;
+            case 3:
+            {
+                //newdoubleplayer
+            }
+            break;
+            case 4:
+            {
+                //exit
+                printf("Are you sure you wanna exit the game?\n[1] Yes\n[2] No\n");
+                scanf("%d", &chosen_option);
+                if (chosen_option==1)
+                    return 0;
+                else
+                    continue;
+            }
+            break;
+        }
+
+
+    }
+
+    //printf("The playground size is %d x %d\n",n,n);
+    return 0;
+}
+
+
+/*
+showmap(unsigned int n,char mode[][])
+{
+    for (int i=0; i<n; i++)
+    {
+        for (int i=0; i<n; i++)
+        {
+            if (char[i][j]=='1')
+            {
+                textcolor(BLUE);
+
+
+            }
+        }
+    }
+}
+*/
